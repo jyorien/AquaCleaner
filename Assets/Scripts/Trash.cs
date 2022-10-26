@@ -28,10 +28,17 @@ public class Trash : MonoBehaviour
 
     IEnumerator StopTrash()
     {
-        yield return new WaitForSeconds(0.5f);
-        rigidBody.gravityScale = 0;
+        // random mass, gravity and stop time
+        float mass = Random.Range(1f, 3f);
+        float stopTime = Random.Range(0.1f, 0.6f);
+        float gravityScale = Random.Range(1f, 4f);
 
-        rigidBody.velocity = Vector2.zero;
+        rigidBody.mass = mass;
+        rigidBody.gravityScale = gravityScale;
+        yield return new WaitForSeconds(stopTime);
+        rigidBody.gravityScale = 0.1f;
+        rigidBody.velocity = new Vector2(0, 0.1f);
+        Destroy(gameObject, 10f);
     }
 
 }
