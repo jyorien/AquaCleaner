@@ -15,7 +15,6 @@ public class TrashSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTrash());
-        
     }
 
     // Update is called once per frame
@@ -28,6 +27,7 @@ public class TrashSpawner : MonoBehaviour
     {
         while (true)
         {
+            // random spawn interval and number of objects spawned at the time at different positions 
             float spawnInterval = Random.Range(0.1f, 5f);
             int numberOfObjects = Random.Range(1, 3);
             for (int i = 0; i < numberOfObjects; i++)
