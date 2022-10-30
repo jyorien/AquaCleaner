@@ -14,7 +14,8 @@ public class TrashSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnTrash());
+        SpawnTrash(5, 5);
+        StartCoroutine(SpawnTrashInIntervals());
     }
 
     // Update is called once per frame
@@ -23,13 +24,9 @@ public class TrashSpawner : MonoBehaviour
         
     }
 
-    IEnumerator SpawnTrash()
+    void SpawnTrash(int minTrashCount, int maxTrashCount)
     {
-        while (true)
-        {
-            // random spawn interval and number of objects spawned at the time at different positions 
-            float spawnInterval = Random.Range(0.1f, 5f);
-            int numberOfObjects = Random.Range(1, 3);
+            int numberOfObjects = Random.Range(minTrashCount, maxTrashCount);
             for (int i = 0; i < numberOfObjects; i++)
             {
                 float spawnPositionX = Random.Range(lowerBound.position.x, upperBound.position.x);
@@ -37,10 +34,20 @@ public class TrashSpawner : MonoBehaviour
                 Vector3 position = new Vector3(spawnPositionX, lowerBound.position.y);
                 GameObject gameObject = Instantiate(trashPrefabs[trashIndex], position, Quaternion.identity);
             }
+    }
+
+    IEnumerator SpawnTrashInIntervals()
+    {
+        yield return new WaitForSeconds(2.0f);
+        while (true)
+        {
+            // random spawn interval and number of objects spawned at the time at different positions 
+            float spawnInterval = Random.Range(0.1f, 3.5f);
+            SpawnTrash(1, 3);
 
             yield return new WaitForSeconds(spawnInterval);
 
-        
+
         }
     }
 }
