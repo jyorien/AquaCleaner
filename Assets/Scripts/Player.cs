@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
-    float MovementSpeed = 2;
-    float JumpForce = 5;
+    float MovementSpeed = 3;
+    float JumpForce = 7;
     Rigidbody2D rb;
+
+    [SerializeField] TMP_Text scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
         string tag = collision.collider.gameObject.tag;
         if (tag == "Trash") {
             GameManager.Instance.AddToScore(1);
+            scoreText.text = $"{GameManager.Instance.GetCurrentScore():D4}";
             Destroy(collision.gameObject);
         }
     }

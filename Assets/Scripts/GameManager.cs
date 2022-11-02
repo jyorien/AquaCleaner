@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    const string SESSION_SCORE = "SESSION_SCORE";
+    const string HIGH_SCORE = "HIGH_SCORE";
     int currentScore = 0;
 
     private static GameManager _instance;
@@ -42,7 +42,12 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd()
     {
-        //PlayerPrefs.SetInt(SESSION_SCORE, currentScore);
+        int highScore = PlayerPrefs.GetInt(HIGH_SCORE, 0);
+        if (currentScore > highScore)
+        {
+            PlayerPrefs.SetInt(HIGH_SCORE, currentScore);
+            PlayerPrefs.Save();
+        }
         SceneManager.LoadScene(sceneName: "EndGameScene");
 
     }
