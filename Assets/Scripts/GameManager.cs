@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -37,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         _instance = this;
     }
 
@@ -48,13 +48,11 @@ public class GameManager : MonoBehaviour
     }
     public void AddToScore(int points)
     {
-        Debug.Log($"points: {points}");
         currentScore += points;
     }
 
     public int GetCurrentScore()
     {
-        Debug.Log($"get score: {currentScore}");
         return currentScore;
     }
 }

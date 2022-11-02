@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CountdownTimer : MonoBehaviour
@@ -10,8 +9,7 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         displayedText = GetComponent<TMP_Text>();
-        Debug.Log("hello");
-        StartCoroutine(Countdown(10));
+        StartCoroutine(Countdown(30));
     }
 
     // Update is called once per frame
@@ -28,10 +26,10 @@ public class CountdownTimer : MonoBehaviour
             yield return new WaitForSeconds(1);
             counter--;
             displayedText.text = $"00:{counter:D2}";
-            Debug.Log(counter);
+            //Debug.Log(counter);
             if (counter == 0)
             {
-                SceneManager.LoadScene(sceneName: "EndGameScene");
+                GameManager.Instance.OnGameEnd();
             }
 
         }
