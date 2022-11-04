@@ -42,7 +42,7 @@ public class TrashSpawner : MonoBehaviour
         while (true)
         {
             // random spawn interval and number of objects spawned at the time at different positions 
-            float spawnInterval = Random.Range(0.1f, 3.5f);
+            float spawnInterval = Random.Range(0.1f, 1.5f);
             SpawnTrash(1, 3);
 
             yield return new WaitForSeconds(spawnInterval);

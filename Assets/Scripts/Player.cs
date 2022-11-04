@@ -5,8 +5,8 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    float MovementSpeed = 3;
-    float JumpForce = 7;
+    [SerializeField] float MovementSpeed = 3;
+    [SerializeField] float JumpForce = 7;
     Rigidbody2D rb;
 
     [SerializeField] TMP_Text scoreText;
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSpeed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButton("Jump"))
         {
             rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
         }

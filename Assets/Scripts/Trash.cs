@@ -26,15 +26,15 @@ public class Trash : MonoBehaviour
     {
         // random mass, gravity and stop time
         float mass = Random.Range(1f, 3f);
-        float stopTime = Random.Range(0.1f, 0.6f);
-        float gravityScale = Random.Range(1f, 4f);
+        float stopTime = Random.Range(0.1f, 0.3f);
+        float gravityScale = Random.Range(1f, 3f);
 
         rigidBody.mass = mass;
         rigidBody.gravityScale = gravityScale;
         yield return new WaitForSeconds(stopTime);
         rigidBody.gravityScale = 0.1f;
         rigidBody.velocity = new Vector2(0, 0.1f);
-        Destroy(gameObject, 10f);
+        Destroy(gameObject, 6f);
     }
 
 }
