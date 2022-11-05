@@ -5,9 +5,10 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float MovementSpeed = 3;
-    [SerializeField] float JumpForce = 7;
+    [SerializeField] float MovementSpeed;
     Rigidbody2D rb;
+    float horizontalMovement;
+    float verticalMovement;
 
     [SerializeField] TMP_Text scoreText;
 
@@ -20,22 +21,48 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSpeed;
-
-        if (Input.GetButton("Jump"))
-        {
-            rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-        }
+        horizontalMovement = Input.GetAxisRaw("Horizontal");
+        verticalMovement = Input.GetAxisRaw("Vertical");
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void FixedUpdate()
     {
-        string tag = collision.collider.gameObject.tag;
-        if (tag == "Trash") {
-            GameManager.Instance.AddToScore(1);
-            scoreText.text = $"{GameManager.Instance.GetCurrentScore():D4}";
-            Destroy(collision.gameObject);
+        //DetectTrash(GetPlayerCenter(), 1);
+
+        if (horizontalMovement == 0 && verticalMovement == 0)
+        {
+            rb.velocity = new Vector2(0, 0);
+            return;
         }
+        var movementInput = new Vector2(horizontalMovement, verticalMovement);
+        var velo = movementInput * MovementSpeed;
+        rb.MovePosition((Vector2) transform.position + (velo * Time.deltaTime));
     }
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    string tag = collision.collider.gameObject.tag;
+    //    if (tag == "Trash") {
+    //        GameManager.Instance.AddToScore(1);
+    //        scoreText.text = $"{GameManager.Instance.GetCurrentScore():D4}";
+    //        Destroy(collision.gameObject);
+    //    }
+    //}
+
+    //void DetectTrash(Vector3 center, float radius)
+    //{
+    //    Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+    //    Debug.Log(hitColliders.Length);
+    //}
+
+    //Vector3 GetPlayerCenter()
+    //{
+    //    return gameObject.transform.position;
+    //}
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.cyan;
+    //    Gizmos.DrawWireSphere(GetPlayerCenter(), 1);
+    //}
 }

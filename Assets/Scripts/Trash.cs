@@ -34,7 +34,15 @@ public class Trash : MonoBehaviour
         yield return new WaitForSeconds(stopTime);
         rigidBody.gravityScale = 0.1f;
         rigidBody.velocity = new Vector2(0, 0.1f);
-        Destroy(gameObject, 6f);
+        //Destroy(gameObject, 6f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Trash")
+        {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), collision.collider);
+        }
     }
 
 }
