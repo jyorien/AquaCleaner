@@ -43,10 +43,20 @@ public class Player : MonoBehaviour
     // player controls
     void MovePlayer()
     {
-        if (HorizontalMovement == 0 && VerticalMovement == 0)
+        if (HorizontalMovement != 0)
         {
-            rb.velocity = new Vector2(0, 0);
-            return;
+            rb.rotation+= -0.3f * HorizontalMovement;
+        }
+        else
+        {
+            if (rb.rotation > 0f)
+            {
+                rb.rotation -= 0.8f;
+            }
+            else
+            {
+                rb.rotation += 0.8f;
+            }
         }
         var movementInput = new Vector2(HorizontalMovement, VerticalMovement);
         var velo = movementInput * MovementSpeed;
