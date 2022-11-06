@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -55,8 +56,15 @@ public class Player : MonoBehaviour
     void DetectTrash(Vector3 center, float radius)
     {
         // detect score area
-        Collider[] colliders = Physics.OverlapSphere(center, radius);
-        Debug.Log($"Number of colliders: {colliders.Length}");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(center, radius);
+        Collider2D[] trashColliders = colliders.Where(col => col.CompareTag("Trash")).ToArray();
+        UpdateScoreElements(trashColliders.Length);
+    }
+
+    void UpdateScoreElements(int score)
+    {
+        GameManager.Instance.UpdateScore(score);
+        scoreText.text = $"{GameManager.Instance.GetCurrentScore():D4}";
     }
 
     Vector3 GetPlayerCenter()

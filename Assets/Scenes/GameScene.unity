@@ -1530,6 +1530,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7513874360757544858, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 488739316}
+    - target: {fileID: 7513874360757544858, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: MovementSpeed
       value: 2
       objectReference: {fileID: 0}
