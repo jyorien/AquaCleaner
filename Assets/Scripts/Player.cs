@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
     // player controls
     void MovePlayer()
     {
-        if (HorizontalMovement != 0)
+        if (HorizontalMovement != 0 && Mathf.Abs(rb.rotation) < 30f)
         {
             rb.rotation+= -0.3f * HorizontalMovement;
         }
