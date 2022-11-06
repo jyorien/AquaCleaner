@@ -1533,6 +1533,10 @@ PrefabInstance:
       propertyPath: MovementSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7513874360757544859, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7513874360956946420, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 25
