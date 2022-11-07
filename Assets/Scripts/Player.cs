@@ -7,6 +7,11 @@ using System.Linq;
 public class Player : MonoBehaviour
 {
     [SerializeField] float MovementSpeed;
+    [SerializeField] Transform LeftBoundary;
+    [SerializeField] Transform RightBoundary;
+    [SerializeField] Transform TopBoundary;
+    [SerializeField] Transform BottomBoundary;
+
     Rigidbody2D rb;
     float HorizontalMovement;
     float VerticalMovement;
@@ -60,7 +65,10 @@ public class Player : MonoBehaviour
         }
         var movementInput = new Vector2(HorizontalMovement, VerticalMovement);
         var velo = movementInput * MovementSpeed;
-        rb.MovePosition((Vector2)transform.position + (velo * Time.deltaTime));
+        var newPosition = (Vector2) transform.position + (velo * Time.deltaTime);
+        if (!IsOutOfBounds(newPosition))
+            rb.MovePosition(newPosition);
+
     }
 
     void DetectTrash(Vector3 center, float radius)
@@ -75,6 +83,15 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.UpdateScore(score);
         scoreText.text = $"{GameManager.Instance.GetCurrentScore():D4}";
+    }
+
+    bool IsOutOfBounds(Vector3 position)
+    {
+        if (position.x < LeftBoundary.position.x || position.x > RightBoundary.position.x || position.y > TopBoundary.position.y || position.y < BottomBoundary.position.y)
+        {
+            return true;
+        }
+        return false;
     }
 
     Vector3 GetPlayerCenter()
