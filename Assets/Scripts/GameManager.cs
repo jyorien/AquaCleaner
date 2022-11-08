@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     const string HIGH_SCORE = "HIGH_SCORE";
     int currentScore = 0;
-
+    int beachScore = 0;
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -64,5 +64,27 @@ public class GameManager : MonoBehaviour
     public int GetCurrentScore()
     {
         return currentScore;
+    }
+
+    public void AddToBeachScore()
+    {
+        beachScore += 1;
+    }
+
+    public void DeductFromBeachScore()
+    {
+        var updatedScore = beachScore - 2;
+        if (updatedScore < 0)
+        {
+            beachScore = 0;
+        } else
+        {
+            beachScore -= 2;
+        }
+    }
+
+    public int GetBeachScore()
+    {
+        return beachScore;
     }
 }

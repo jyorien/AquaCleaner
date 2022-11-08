@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trash
+  - EWaste
+  - Recyclable
+  - RecycleBin
+  - TrashBin
+  - EWasteBin
   layers:
   - Default
   - TransparentFX
@@ -41,6 +46,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 3035861101
+    locked: 0
+  - name: Bin
+    uniqueID: 4286756039
     locked: 0
   - name: Default
     uniqueID: 0
