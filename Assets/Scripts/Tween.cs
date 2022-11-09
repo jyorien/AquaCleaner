@@ -12,7 +12,7 @@ public class Tween : MonoBehaviour
     void Start()
     {
         bool isEnd = false;
-        LeanTween.moveY(Waves, 2.6f, 4f).setOnComplete(() =>
+        LeanTween.moveY(Waves, 2.6f, 3f).setOnComplete(() =>
         {
             if (!isEnd)
             {
@@ -45,7 +45,10 @@ public class Tween : MonoBehaviour
             float spawnPositionY = Random.Range(LowerBound.position.y, UpperBound.position.y);
             int trashIndex = Random.Range(0, WastePrefabs.Length);
             Vector3 position = new Vector3(spawnPositionX, spawnPositionY);
+            float fadeTime = Random.Range(0.1f, 1.0f);
             GameObject gameObject = Instantiate(WastePrefabs[trashIndex], position, Quaternion.identity);
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            LeanTween.alpha(gameObject, 1f, fadeTime);
         }
     }
 }
