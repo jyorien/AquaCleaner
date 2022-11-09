@@ -16,7 +16,6 @@ public class Tween : MonoBehaviour
         {
             if (!isEnd)
             {
-                Debug.Log(isEnd);
                 GenerateWaste();
             }
             isEnd = !isEnd;
@@ -38,7 +37,6 @@ public class Tween : MonoBehaviour
         GameObject[] totalRecyclable = GameObject.FindGameObjectsWithTag("Recyclable");
         totalNumberOfWaste = totalEWaste.Length + totalTrash.Length + totalRecyclable.Length;
         if (totalNumberOfWaste > 8) return;
-        Debug.Log($"total waste: {totalNumberOfWaste}");
         for (int i = 0; i < 5; i++)
         {
             float spawnPositionX = Random.Range(LowerBound.position.x, UpperBound.position.x);

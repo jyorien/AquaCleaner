@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName: "EndGameScene");
 
     }
+
+    public void OnBeachGameEnd()
+    {
+        Debug.Log("Game end");
+    }
     public void AddToScore(int points)
     {
         currentScore += points;
