@@ -73,7 +73,6 @@ public class BeachItem : MonoBehaviour
         {
             GameManager.Instance.DeductFromBeachScore();
         }
-        Debug.Log($"Beach Score: {GameManager.Instance.GetBeachScore()}");
         Destroy(gameObject);
     }
 }
