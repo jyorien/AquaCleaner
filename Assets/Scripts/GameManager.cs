@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     const string HIGH_SCORE = "HIGH_SCORE";
     int currentScore = 0;
     int beachScore = 0;
+    [SerializeField] TMP_Text NewlyAddedScoreText;
+    AudioSource AudioPlayer;
+    [SerializeField] AudioClip SuccessSound;
+    [SerializeField] AudioClip FailureSound;
+
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -26,6 +31,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioPlayer = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -74,6 +80,10 @@ public class GameManager : MonoBehaviour
     public void AddToBeachScore()
     {
         beachScore += 1;
+        NewlyAddedScoreText.text = "+1";
+        NewlyAddedScoreText.color = new Color32(134, 255, 137, 255);
+        AudioPlayer.clip = SuccessSound;
+        AudioPlayer.Play();
     }
 
     public void DeductFromBeachScore()
@@ -86,6 +96,10 @@ public class GameManager : MonoBehaviour
         {
             beachScore -= 2;
         }
+        NewlyAddedScoreText.text = "-2";
+        NewlyAddedScoreText.color = new Color32(255, 57, 111, 255);
+        AudioPlayer.clip = FailureSound;
+        AudioPlayer.Play();
     }
 
     public int GetBeachScore()

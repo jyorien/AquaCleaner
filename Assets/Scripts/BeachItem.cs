@@ -10,6 +10,7 @@ public class BeachItem : MonoBehaviour
     Vector2 difference = Vector2.zero;
     SpriteRenderer spriteRenderer;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,10 +69,13 @@ public class BeachItem : MonoBehaviour
         if (itemTag == trueTag)
         {
             GameManager.Instance.AddToBeachScore();
+
+            
         }
         else
         {
             GameManager.Instance.DeductFromBeachScore();
+
         }
         Destroy(gameObject);
     }
