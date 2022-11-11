@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: f33cbd3c6362242c0adb890bea2301e5
+  - enabled: 1
+    path: Assets/Scenes/BeachEndScene.unity
+    guid: 0a0c836f671ca4bd89f7c0510c979fbd
+  - enabled: 1
+    path: Assets/Scenes/BeachCleanUpScene.unity
+    guid: 2db6be4373bc445cd9496b6cab0ccad0
   m_configObjects: {}

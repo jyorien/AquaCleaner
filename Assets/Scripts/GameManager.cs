@@ -6,6 +6,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     const string HIGH_SCORE = "HIGH_SCORE";
+    const string BEACH_HIGH_SCORE = "BEACH_HIGH_SCORE";
+
     int currentScore = 0;
     int beachScore = 0;
     [SerializeField] TMP_Text NewlyAddedScoreText;
@@ -60,7 +62,13 @@ public class GameManager : MonoBehaviour
 
     public void OnBeachGameEnd()
     {
-        Debug.Log("Game end");
+        int highScore = PlayerPrefs.GetInt(BEACH_HIGH_SCORE, 0);
+        if (beachScore > highScore)
+        {
+            PlayerPrefs.SetInt(BEACH_HIGH_SCORE, beachScore);
+            PlayerPrefs.Save();
+        }
+        SceneManager.LoadScene(sceneName: "BeachEndScene");
     }
     public void AddToScore(int points)
     {
