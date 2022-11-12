@@ -10,6 +10,9 @@ TagManager:
   - RecycleBin
   - TrashBin
   - EWasteBin
+  - NPC
+  - NameUI
+  - DialogUI
   layers:
   - Default
   - TransparentFX
@@ -46,6 +49,9 @@ TagManager:
   m_SortingLayers:
   - name: Background
     uniqueID: 3035861101
+    locked: 0
+  - name: Waves
+    uniqueID: 1413211217
     locked: 0
   - name: Bin
     uniqueID: 4286756039

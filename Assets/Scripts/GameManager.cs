@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     AudioSource AudioPlayer;
     [SerializeField] AudioClip SuccessSound;
     [SerializeField] AudioClip FailureSound;
+    [SerializeField] GameObject canvas;
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -39,13 +40,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
         _instance = this;
+    }
+
+    public void OpenDialog(bool isOpen)
+    {
+        canvas.SetActive(isOpen);
     }
 
     public void OnGameEnd()

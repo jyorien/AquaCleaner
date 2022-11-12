@@ -17,7 +17,7 @@ public class BeachEndDisplay : MonoBehaviour
         int highScore = PlayerPrefs.GetInt(HIGH_SCORE, 0);
         scoreText.text = $"Total Score: {GameManager.Instance.GetBeachScore()}";
         highScoreText.text = $"High Score: {highScore}";
-        RetryButton.onClick.AddListener(() => { SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); });
+        RetryButton.onClick.AddListener(() => { SceneManager.LoadScene(sceneName: "WorldScene"); });
     }
 
     // Update is called once per frame

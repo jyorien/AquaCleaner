@@ -11,7 +11,7 @@ public class RetryButton : MonoBehaviour
     void Start()
     {
         retryButton = GetComponent<Button>();
-        retryButton.onClick.AddListener(() => { SceneManager.LoadScene(sceneName: "GameScene"); });
+        retryButton.onClick.AddListener(() => { SceneManager.LoadScene(sceneName: "WorldScene"); });
     }
 
     // Update is called once per frame
