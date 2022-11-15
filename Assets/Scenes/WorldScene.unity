@@ -606,7 +606,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 315627274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6032512, y: -1.2036481, z: -10}
+  m_LocalPosition: {x: -0.9084479, y: -2.582584, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -701,6 +701,7 @@ GameObject:
   - component: {fileID: 359372860}
   - component: {fileID: 359372859}
   - component: {fileID: 359372861}
+  - component: {fileID: 359372862}
   m_Layer: 0
   m_Name: Classmate
   m_TagString: Untagged
@@ -799,6 +800,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &359372862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359372858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff3d52840ba84d8aa77d2fd8ddba8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameUI: {fileID: 1724815372}
+  DialogUI: {fileID: 1664939932}
+  Btn: {fileID: 1451322067}
+  BtnText: {fileID: 1374897657}
 --- !u!1 &475547353
 GameObject:
   m_ObjectHideFlags: 0

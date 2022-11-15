@@ -16,6 +16,9 @@ public class DialogHandler : MonoBehaviour
     int _dialogIndex = 0;
     Dialog[] _currentDialogs = { };
     NPC Hermie = new NPC("Hermie", new Dialog[]{
+        new Dialog("(Pssstt..)",true, null, null),
+        new Dialog("Huh?", false, null, null),
+        new Dialog("(Psstt...) Over here, bud!", true, null ,null),
         new Dialog("Hey bud, have you seen my best bud Sheldon? I haven't seen him in days!",true, null, null),
         new Dialog("Anyways, ain't it seem like the shells here been lookin' weird lately?",true, null, null),
         new Dialog("They've all been lookin' so grey and ugly. Look at my shell!" ,true, null, null),
@@ -29,7 +32,7 @@ public class DialogHandler : MonoBehaviour
         new Dialog("H-Hey... Don't you think the ocean's b-been weird recently?",true, null, null),
         new Dialog("I-I've been seeing more jellyfishes i-in the ocean... but my stomach has also been feeling bad lately...",true, null, null),
         new Dialog("D-Do you think the jellyfishes h-have gone bad?",true, null, null),
-        new Dialog("(The plastics in the ocean have caused turtles to mistake the plastics for food)",false, null, null),
+        //new Dialog("(The plastics in the ocean have caused turtles to mistake the plastics for food)",false, null, null),
         new Dialog("(I should probably collect the trash in the ocean)",false, "Accept", () => { SceneManager.LoadScene(sceneName: "GameScene"); }),
     }
     );
