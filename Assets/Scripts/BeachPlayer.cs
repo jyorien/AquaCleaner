@@ -71,7 +71,26 @@ public class BeachPlayer : MonoBehaviour
    
         var velo = movementInput * MovementSpeed;
         var newPosition = (Vector2)transform.position + (velo * Time.deltaTime);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, 0.2f);
+        bool isCollide = false;
+        foreach (Collider2D collider in colliders)
+        {
+            string name = collider.name;
+            if (name == "Toddie" || name == "Ms Gaia" || name == "Hermie" || name == "Classmate" || name == "Grid")
+            {
+                isCollide = true;
+            }
+        }
         //if (!IsOutOfBounds(newPosition))
+        if (!isCollide) 
             rb.MovePosition(newPosition);
     }
+
+    private void OnDrawGizmos()
+    {
+        // score area gizmos
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, 0.2f);
+    }
+
 }

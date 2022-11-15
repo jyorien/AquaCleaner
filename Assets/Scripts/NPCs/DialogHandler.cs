@@ -20,7 +20,7 @@ public class DialogHandler : MonoBehaviour
         new Dialog("Anyways, ain't it seem like the shells here been lookin' weird lately?",true, null, null),
         new Dialog("They've all been lookin' so grey and ugly. Look at my shell!" ,true, null, null),
         new Dialog("Any idea what's happened?" ,true, null, null),
-        new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
+        //new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
          new Dialog("(I should probably clean the beach)", false, "Accept", () => { SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
     }
         );
@@ -41,26 +41,36 @@ public class DialogHandler : MonoBehaviour
     }
 );
 
-
-    private void OnMouseDown()
+    NPC Classmate = new NPC("Classmate", new Dialog[]
     {
-        Debug.Log("on mouse down");
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2);
-        foreach (Collider2D collider in colliders)
+        new Dialog($"Heya, {PlayerName}! Don't you just love the smell of the beach~?", true, null, null),
+        new Dialog("When I'm sad, I sit by the waters and it magically makes me feel better~", true, null, null),
+        new Dialog("Don't you think it would be a shame if all we saw was floating trash in the future?", true, null, null),
+        new Dialog("Every year, roughly 8 million tons of plastic enters our oceans.", true, null, null),
+        new Dialog("I joined the Environmental Club because I wanted to make a difference~", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
+    });
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
         {
-            Debug.Log(collider.name);
-            if (collider.name == "Player")
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+            foreach (Collider2D collider in colliders)
             {
-                Debug.Log($"NPC Name: {gameObject.name}");
-                StartDialog();
+                Debug.Log(collider.name);
+                if (collider.name == "Player")
+                {
+                    Debug.Log($"NPC Name: {gameObject.name}");
+                    StartDialog();
+                }
             }
         }
-    }
 
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, 2);
+        Gizmos.DrawWireSphere(transform.position, 1);
     }
 
     private void StartDialog()
@@ -96,6 +106,15 @@ public class DialogHandler : MonoBehaviour
                 _currentNPC = "Ms Gaia";
 
                 _currentDialogs = MsGaia.Dialogs;
+                UpdateDialog();
+                Btn.onClick.AddListener(() => {
+                    UpdateDialog();
+                });
+                break;
+            case "Classmate":
+                _currentNPC = "Classmate";
+
+                _currentDialogs = Classmate.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
                     UpdateDialog();
