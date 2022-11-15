@@ -34,6 +34,14 @@ public class DialogHandler : MonoBehaviour
     }
     );
 
+    NPC MsGaia = new NPC("Ms Gaia", new Dialog[]{
+        new Dialog($"Hey, {PlayerName}! Today, the Environment Club decided to clean the beach.", true, null, null),
+        new Dialog($"The beach has been looking bad recently.. the creatures here don't look well.", true, null, null),
+        new Dialog($"I wonder if there's a way to help them?", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
+    }
+);
+
+
     private void OnMouseDown()
     {
         Debug.Log("on mouse down");
@@ -61,6 +69,8 @@ public class DialogHandler : MonoBehaviour
         GameManager.Instance.OpenDialog(true);
         // reset index
         _dialogIndex = 0;
+        BtnText.text = "Next";
+        Btn.onClick.RemoveAllListeners();
 
         switch (gameObject.name)
         {
@@ -77,6 +87,15 @@ public class DialogHandler : MonoBehaviour
                 _currentNPC = "Toddie";
 
                 _currentDialogs = Toddie.Dialogs;
+                UpdateDialog();
+                Btn.onClick.AddListener(() => {
+                    UpdateDialog();
+                });
+                break;
+            case "Ms Gaia":
+                _currentNPC = "Ms Gaia";
+
+                _currentDialogs = MsGaia.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
                     UpdateDialog();
