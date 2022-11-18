@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
     AudioSource AudioPlayer;
     [SerializeField] AudioClip SuccessSound;
     [SerializeField] AudioClip FailureSound;
-    [SerializeField] GameObject canvas;
+
+    [SerializeField] GameObject NamePanel;
+    [SerializeField] GameObject DialogPanel;
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -50,7 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void OpenDialog(bool isOpen)
     {
-        canvas.SetActive(isOpen);
+        NamePanel.SetActive(isOpen);
+        DialogPanel.SetActive(isOpen);
     }
 
     public void OnGameEnd()
