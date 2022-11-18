@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 public class DialogHandler : MonoBehaviour
 {
-    const string PlayerName = "Joey";
+    //const string PlayerName = "Joey";
     [SerializeField] TMP_Text NameUI;
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
@@ -15,43 +15,11 @@ public class DialogHandler : MonoBehaviour
     string _currentNPC = "";
     int _dialogIndex = 0;
     Dialog[] _currentDialogs = { };
-    NPC Hermie = new NPC("Hermie", new Dialog[]{
-        new Dialog("(Pssstt..)",true, null, null),
-        new Dialog("Huh?", false, null, null),
-        new Dialog("(Psstt...) Over here, bud!", true, null ,null),
-        new Dialog("Hey bud, have you seen my best bud Sheldon? I haven't seen him in days!",true, null, null),
-        new Dialog("Anyways, ain't it seem like the shells here been lookin' weird lately?",true, null, null),
-        new Dialog("They've all been lookin' so grey and ugly. Look at my shell!" ,true, null, null),
-        new Dialog("Any idea what's happened?" ,true, null, null),
-        //new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
-         new Dialog("(I should probably clean the beach)", false, "Accept", () => { SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
-    }
-        );
-
-    NPC Toddie = new NPC("Toddie", new Dialog[]{
-        new Dialog("H-Hey... Don't you think the ocean's b-been weird recently?",true, null, null),
-        new Dialog("I-I've been seeing more jellyfishes i-in the ocean... but my stomach has also been feeling bad lately...",true, null, null),
-        new Dialog("D-Do you think the jellyfishes h-have gone bad?",true, null, null),
-        //new Dialog("(The plastics in the ocean have caused turtles to mistake the plastics for food)",false, null, null),
-        new Dialog("(I should probably collect the trash in the ocean)",false, "Accept", () => { SceneManager.LoadScene(sceneName: "GameScene"); }),
-    }
-    );
-
-    NPC MsGaia = new NPC("Ms Gaia", new Dialog[]{
-        new Dialog($"Hey, {PlayerName}! Today, the Environment Club decided to clean the beach.", true, null, null),
-        new Dialog($"The beach has been looking bad recently.. the creatures here don't look well.", true, null, null),
-        new Dialog($"I wonder if there's a way to help them?", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
-    }
-);
-
-    NPC Classmate = new NPC("Classmate", new Dialog[]
+    private void Start()
     {
-        new Dialog($"Heya, {PlayerName}! Don't you just love the smell of the beach~?", true, null, null),
-        new Dialog("When I'm sad, I sit by the waters and it magically makes me feel better~", true, null, null),
-        new Dialog("Don't you think it would be a shame if all we saw was floating trash in the future?", true, null, null),
-        new Dialog("Every year, roughly 8 million tons of plastic enters our oceans.", true, null, null),
-        new Dialog("I joined the Environmental Club because I wanted to make a difference~", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
-    });
+ 
+
+    }
 
     private void Update()
     {
@@ -60,10 +28,10 @@ public class DialogHandler : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
             foreach (Collider2D collider in colliders)
             {
-                Debug.Log(collider.name);
+                //Debug.Log(collider.name);
                 if (collider.name == "Player")
                 {
-                    Debug.Log($"NPC Name: {gameObject.name}");
+                    //Debug.Log($"NPC Name: {gameObject.name}");
                     StartDialog();
                 }
             }
@@ -89,7 +57,7 @@ public class DialogHandler : MonoBehaviour
         {
             case "Hermie":
                 _currentNPC = "Hermie";
-
+                NPC Hermie = CreateHermie();
                 _currentDialogs = Hermie.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
@@ -98,7 +66,7 @@ public class DialogHandler : MonoBehaviour
                 break;
             case "Toddie":
                 _currentNPC = "Toddie";
-
+                NPC Toddie = CreateToddie();
                 _currentDialogs = Toddie.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
@@ -107,7 +75,7 @@ public class DialogHandler : MonoBehaviour
                 break;
             case "Ms Gaia":
                 _currentNPC = "Ms Gaia";
-
+                NPC MsGaia = CreateMsGaia();
                 _currentDialogs = MsGaia.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
@@ -116,7 +84,7 @@ public class DialogHandler : MonoBehaviour
                 break;
             case "Classmate":
                 _currentNPC = "Classmate";
-
+                NPC Classmate = CreateClassmate();
                 _currentDialogs = Classmate.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
@@ -131,7 +99,7 @@ public class DialogHandler : MonoBehaviour
     void UpdateDialog()
     {
         Dialog dialog = _currentDialogs[_dialogIndex];
-        NameUI.text = dialog._isNPC ? _currentNPC : PlayerName;
+        NameUI.text = dialog._isNPC ? _currentNPC : GameManager.Instance.GetPlayerName();
         DialogUI.text = dialog._text;
         
         _dialogIndex += 1;
@@ -145,5 +113,53 @@ public class DialogHandler : MonoBehaviour
             });
             return;
         }
+    }
+
+    // NPCS
+    NPC CreateHermie()
+    {
+        return new NPC("Hermie", new Dialog[]{
+        new Dialog("(Pssstt..)",true, null, null),
+        new Dialog("Huh?", false, null, null),
+        new Dialog("(Psstt...) Over here, bud!", true, null ,null),
+        new Dialog("Hey bud, have you seen my best bud Sheldon? I haven't seen him in days!",true, null, null),
+        new Dialog("Anyways, ain't it seem like the shells here been lookin' weird lately?",true, null, null),
+        new Dialog("They've all been lookin' so grey and ugly. Look at my shell!" ,true, null, null),
+        new Dialog("Any idea what's happened?" ,true, null, null),
+        //new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
+         new Dialog("(I should probably clean the beach)", false, "Accept", () => { SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
+    }
+        );
+    }
+    NPC CreateToddie()
+    {
+        return new NPC("Toddie", new Dialog[]{
+        new Dialog("H-Hey... Don't you think the ocean's b-been weird recently?",true, null, null),
+        new Dialog("I-I've been seeing more jellyfishes i-in the ocean... but my stomach has also been feeling bad lately...",true, null, null),
+        new Dialog("D-Do you think the jellyfishes h-have gone bad?",true, null, null),
+        //new Dialog("(The plastics in the ocean have caused turtles to mistake the plastics for food)",false, null, null),
+        new Dialog("(I should probably collect the trash in the ocean)",false, "Accept", () => { SceneManager.LoadScene(sceneName: "GameScene"); }),
+    }
+    );
+    }
+    NPC CreateMsGaia()
+    {
+        return new NPC("Ms Gaia", new Dialog[]{
+        new Dialog($"Hey, {GameManager.Instance.GetPlayerName()}! Today, the Environment Club decided to clean the beach.", true, null, null),
+        new Dialog($"The beach has been looking bad recently.. the creatures here don't look well.", true, null, null),
+        new Dialog($"I wonder if there's a way to help them?", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
+    }
+);
+    }
+    NPC CreateClassmate()
+    {
+        return new NPC("Classmate", new Dialog[]
+    {
+        new Dialog($"Heya, {GameManager.Instance.GetPlayerName()}! Don't you just love the smell of the beach~?", true, null, null),
+        new Dialog("When I'm sad, I sit by the waters and it magically makes me feel better~", true, null, null),
+        new Dialog("Don't you think it would be a shame if all we saw was floating trash in the future?", true, null, null),
+        new Dialog("Every year, roughly 8 million tons of plastic enters our oceans.", true, null, null),
+        new Dialog("I joined the Environmental Club because I wanted to make a difference~", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
+    });
     }
 }

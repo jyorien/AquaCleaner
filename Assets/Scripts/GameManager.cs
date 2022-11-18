@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     int currentScore = 0;
     int beachScore = 0;
+    string PlayerName = "Johnny";
     [SerializeField] TMP_Text NewlyAddedScoreText;
     AudioSource AudioPlayer;
     [SerializeField] AudioClip SuccessSound;
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject NamePanel;
     [SerializeField] GameObject DialogPanel;
+    [SerializeField] GameObject InputNamePanel;
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -39,15 +41,25 @@ public class GameManager : MonoBehaviour
         AudioPlayer = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
         _instance = this;
+    }
+
+    public void OpenNameInput(bool isOpen)
+    {
+        InputNamePanel.SetActive(isOpen);
+    }
+
+    public void SetPlayerName(string name)
+    {
+        PlayerName = name;
+    }
+
+    public string GetPlayerName()
+    {
+        return PlayerName;
     }
 
     public void OpenDialog(bool isOpen)
