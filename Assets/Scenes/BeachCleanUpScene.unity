@@ -1558,10 +1558,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112012614}
-  - component: {fileID: 2112012613}
   - component: {fileID: 2112012615}
+  - component: {fileID: 2112012613}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: BeachGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1576,13 +1576,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2112012612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9adb0a7b3b2684fdfa85c1d4c2190007, type: 3}
+  m_Script: {fileID: 11500000, guid: adc9679a2c6154128a73343a42c806af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NewlyAddedScoreText: {fileID: 844016669}
   SuccessSound: {fileID: 8300000, guid: 5589e5b97b40c4a2f84fec09f2450206, type: 3}
   FailureSound: {fileID: 8300000, guid: 9cf402a688a474995a07dcc87f448a91, type: 3}
-  canvas: {fileID: 0}
 --- !u!4 &2112012614
 Transform:
   m_ObjectHideFlags: 0

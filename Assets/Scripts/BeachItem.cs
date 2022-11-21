@@ -68,13 +68,13 @@ public class BeachItem : MonoBehaviour
     {
         if (itemTag == trueTag)
         {
-            GameManager.Instance.AddToBeachScore();
+            BeachCleanUpManager.Instance.AddToBeachScore();
 
             
         }
         else
         {
-            GameManager.Instance.DeductFromBeachScore();
+            BeachCleanUpManager.Instance.DeductFromBeachScore();
 
         }
         Destroy(gameObject);
