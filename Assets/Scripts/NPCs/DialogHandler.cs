@@ -130,9 +130,7 @@ public class DialogHandler : MonoBehaviour
         new Dialog("Any idea what's happened?" ,true, null, null),
         //new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
          new Dialog("(I should probably clean the beach)", false, "Accept", () => {
-             Debug.Log($"{Player.transform.position.x} {Player.transform.position.y}");
-             PlayerPrefs.SetFloat(COORD_X, Player.transform.position.x);
-             PlayerPrefs.SetFloat(COORD_Y, Player.transform.position.y);
+             SavePosition();
              SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
     }
         );
@@ -144,7 +142,9 @@ public class DialogHandler : MonoBehaviour
         new Dialog("I-I've been seeing more jellyfishes i-in the ocean... but my stomach has also been feeling bad lately...",true, null, null),
         new Dialog("D-Do you think the jellyfishes h-have gone bad?",true, null, null),
         //new Dialog("(The plastics in the ocean have caused turtles to mistake the plastics for food)",false, null, null),
-        new Dialog("(I should probably collect the trash in the ocean)",false, "Accept", () => { SceneManager.LoadScene(sceneName: "GameScene"); }),
+        new Dialog("(I should probably collect the trash in the ocean)",false, "Accept", () => {
+            SavePosition();
+            SceneManager.LoadScene(sceneName: "GameScene"); }),
     }
     );
     }
@@ -167,5 +167,11 @@ public class DialogHandler : MonoBehaviour
         new Dialog("Every year, roughly 8 million tons of plastic enters our oceans.", true, null, null),
         new Dialog("I joined the Environmental Club because I wanted to make a difference~", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
     });
+    }
+
+    void SavePosition()
+    {
+       PlayerPrefs.SetFloat(COORD_X, Player.transform.position.x);
+       PlayerPrefs.SetFloat(COORD_Y, Player.transform.position.y);
     }
 }

@@ -5794,7 +5794,7 @@ MonoBehaviour:
   DialogUI: {fileID: 1664939932}
   Btn: {fileID: 1451322067}
   BtnText: {fileID: 1374897657}
-  Player: {fileID: 0}
+  Player: {fileID: 171036606}
 --- !u!1 &1647628385
 GameObject:
   m_ObjectHideFlags: 0
