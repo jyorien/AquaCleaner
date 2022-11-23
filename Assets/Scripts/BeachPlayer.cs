@@ -6,6 +6,9 @@ public class BeachPlayer : MonoBehaviour
 {
     [SerializeField] float MovementSpeed;
     [SerializeField] Animator animator;
+    [SerializeField] BoxCollider2D LeftBoundary;
+    [SerializeField] BoxCollider2D RightBoundary;
+    [SerializeField] BoxCollider2D BottomBoundary;
     float HorizontalMovement;
     float VerticalMovement;
     bool left, right, forward, backward = false;
@@ -76,7 +79,7 @@ public class BeachPlayer : MonoBehaviour
         foreach (Collider2D collider in colliders)
         {
             string name = collider.name;
-            if (name == "Toddie" || name == "Ms Gaia" || name == "Hermie" || name == "Classmate" || name == "Grid")
+            if (name == "Toddie" || name == "Ms Gaia" || name == "Hermie" || name == "Classmate" || name == "Grid" || name == "Left Boundary" || name == "Right Boundary" || name == "Bottom Boundary")
             {
                 isCollide = true;
             }
