@@ -383,6 +383,7 @@ MonoBehaviour:
   ConfirmButton: {fileID: 1043871205}
   NameInputField: {fileID: 441821149}
   PlayerScript: {fileID: 171036609}
+  Player: {fileID: 171036606}
 --- !u!1 &272266624
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +912,7 @@ MonoBehaviour:
   DialogUI: {fileID: 1664939932}
   Btn: {fileID: 1451322067}
   BtnText: {fileID: 1374897657}
+  Player: {fileID: 0}
 --- !u!1 &441821147
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,9 +2225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9adb0a7b3b2684fdfa85c1d4c2190007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewlyAddedScoreText: {fileID: 0}
-  SuccessSound: {fileID: 0}
-  FailureSound: {fileID: 0}
   NamePanel: {fileID: 295078009}
   DialogPanel: {fileID: 875632952}
   InputNamePanel: {fileID: 198209851}
@@ -5795,6 +5794,7 @@ MonoBehaviour:
   DialogUI: {fileID: 1664939932}
   Btn: {fileID: 1451322067}
   BtnText: {fileID: 1374897657}
+  Player: {fileID: 0}
 --- !u!1 &1647628385
 GameObject:
   m_ObjectHideFlags: 0
@@ -5981,6 +5981,7 @@ MonoBehaviour:
   DialogUI: {fileID: 1664939932}
   Btn: {fileID: 1451322067}
   BtnText: {fileID: 1374897657}
+  Player: {fileID: 171036606}
 --- !u!1 &1654133921
 GameObject:
   m_ObjectHideFlags: 0
@@ -6811,6 +6812,7 @@ MonoBehaviour:
   DialogUI: {fileID: 1664939932}
   Btn: {fileID: 1451322067}
   BtnText: {fileID: 1374897657}
+  Player: {fileID: 0}
 --- !u!61 &1878637728
 BoxCollider2D:
   m_ObjectHideFlags: 0

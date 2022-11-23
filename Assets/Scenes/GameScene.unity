@@ -1077,7 +1077,7 @@ GameObject:
   - component: {fileID: 1201104339}
   - component: {fileID: 1201104338}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: OceanGameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201104337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9adb0a7b3b2684fdfa85c1d4c2190007, type: 3}
+  m_Script: {fileID: 11500000, guid: ef5db07dcc7b54e14959bc332c0dc22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1201104339
@@ -1746,7 +1746,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1259106195
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a27b299623ff84bec9a05216845e48bd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

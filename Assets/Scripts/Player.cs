@@ -81,8 +81,8 @@ public class Player : MonoBehaviour
 
     void UpdateScoreElements(int score)
     {
-        GameManager.Instance.UpdateScore(score);
-        scoreText.text = $"{GameManager.Instance.GetCurrentScore():D4}";
+        OceanGameManager.Instance.UpdateScore(score);
+        scoreText.text = $"{OceanGameManager.Instance.GetCurrentScore():D4}";
     }
 
     bool IsOutOfBounds(Vector3 position)

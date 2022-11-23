@@ -7,11 +7,13 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 public class DialogHandler : MonoBehaviour
 {
-    //const string PlayerName = "Joey";
+    const string COORD_X = "COORD_X";
+    const string COORD_Y = "COORD_Y";
     [SerializeField] TMP_Text NameUI;
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
     [SerializeField] TMP_Text BtnText;
+    [SerializeField] GameObject Player;
     string _currentNPC = "";
     int _dialogIndex = 0;
     Dialog[] _currentDialogs = { };
@@ -127,7 +129,11 @@ public class DialogHandler : MonoBehaviour
         new Dialog("They've all been lookin' so grey and ugly. Look at my shell!" ,true, null, null),
         new Dialog("Any idea what's happened?" ,true, null, null),
         //new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
-         new Dialog("(I should probably clean the beach)", false, "Accept", () => { SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
+         new Dialog("(I should probably clean the beach)", false, "Accept", () => {
+             Debug.Log($"{Player.transform.position.x} {Player.transform.position.y}");
+             PlayerPrefs.SetFloat(COORD_X, Player.transform.position.x);
+             PlayerPrefs.SetFloat(COORD_Y, Player.transform.position.y);
+             SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
     }
         );
     }

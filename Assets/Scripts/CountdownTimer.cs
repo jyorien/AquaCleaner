@@ -29,7 +29,7 @@ public class CountdownTimer : MonoBehaviour
             //Debug.Log(counter);
             if (counter == 0)
             {
-                GameManager.Instance.OnGameEnd();
+                OceanGameManager.Instance.OnGameEnd();
             }
 
         }

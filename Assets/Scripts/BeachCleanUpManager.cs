@@ -20,7 +20,7 @@ public class BeachCleanUpManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                Debug.LogError("GameManager is null");
+                Debug.LogError("BeachCleanUpManager is null");
             }
             return _instance;
         }
