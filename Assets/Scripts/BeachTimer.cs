@@ -9,7 +9,7 @@ public class BeachTimer : MonoBehaviour
     void Start()
     {
         displayedText = GetComponent<TMP_Text>();
-        StartCoroutine(Countdown(10));
+        StartCoroutine(Countdown(60));
     }
 
     // Update is called once per frame
