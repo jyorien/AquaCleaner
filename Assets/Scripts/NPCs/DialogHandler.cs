@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using System.Linq;
 public class DialogHandler : MonoBehaviour
 {
     const string COORD_X = "COORD_X";
@@ -14,31 +15,69 @@ public class DialogHandler : MonoBehaviour
     [SerializeField] Button Btn;
     [SerializeField] TMP_Text BtnText;
     [SerializeField] GameObject Player;
+    [SerializeField] GameObject HermieNKey;
+    [SerializeField] GameObject ToddieNKey;
+    [SerializeField] GameObject GaiaNKey;
+    [SerializeField] GameObject ClassmateNKey;
+    string currentNearbyNPC = "";
     string _currentNPC = "";
     int _dialogIndex = 0;
     Dialog[] _currentDialogs = { };
-    private void Start()
-    {
- 
-
-    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
+
+        Collider2D[] npcCollider = Physics2D.OverlapCircleAll(transform.position, 1);
+
+        List<string> colliderNameList = npcCollider.Select(item => item.name).ToList();
+        Debug.Log($"{colliderNameList}");
+
+        string npcName = gameObject.name;
+        if (colliderNameList.Contains("Player"))
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
-            foreach (Collider2D collider in colliders)
+            if (Input.GetKeyDown(KeyCode.N))
             {
-                //Debug.Log(collider.name);
-                if (collider.name == "Player")
-                {
-                    //Debug.Log($"NPC Name: {gameObject.name}");
-                    StartDialog();
-                }
+                StartDialog();
+            }
+            currentNearbyNPC = npcName;
+            switch (npcName)
+            {
+                case "Hermie":
+                    HermieNKey.SetActive(true);
+                    break;
+                case "Toddie":
+                    ToddieNKey.SetActive(true);
+                    break;
+                case "Ms Gaia":
+                    GaiaNKey.SetActive(true);
+                    break;
+                case "Classmate":
+                    ClassmateNKey.SetActive(true);
+                    break;
+                default:
+                    break;
+            }
+        } else
+        {
+            currentNearbyNPC = npcName;
+            switch (npcName)
+            {
+                case "Hermie":
+                    HermieNKey.SetActive(false);
+                    break;
+                case "Toddie":
+                    ToddieNKey.SetActive(false);
+                    break;
+                case "Ms Gaia":
+                    GaiaNKey.SetActive(false);
+                    break;
+                case "Classmate":
+                    ClassmateNKey.SetActive(false);
+                    break;
+                default:
+                    break;
             }
         }
-
     }
     private void OnDrawGizmos()
     {
