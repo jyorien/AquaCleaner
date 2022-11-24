@@ -44,9 +44,12 @@ public class Tween : MonoBehaviour
             int trashIndex = Random.Range(0, WastePrefabs.Length);
             Vector3 position = new Vector3(spawnPositionX, spawnPositionY);
             float fadeTime = Random.Range(0.1f, 1.0f);
-            GameObject gameObject = Instantiate(WastePrefabs[trashIndex], position, Quaternion.identity);
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-            LeanTween.alpha(gameObject, 1f, fadeTime);
+            GameObject newTrash = Instantiate(WastePrefabs[trashIndex], position, Quaternion.identity);
+            newTrash.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            float trashMoveForwardDistance = Random.Range(-0.3f, -0.1f);
+            float trashMoveForwardTime = Random.Range(0.5f, 0.8f);
+            LeanTween.alpha(newTrash, 1f, fadeTime);
+            LeanTween.moveY(newTrash, trashMoveForwardDistance, trashMoveForwardTime);
         }
     }
 }
