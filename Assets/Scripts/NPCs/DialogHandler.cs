@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.SceneManagement;
-using System.Linq;
+
 public class DialogHandler : MonoBehaviour
 {
     const string COORD_X = "COORD_X";
@@ -19,24 +19,24 @@ public class DialogHandler : MonoBehaviour
     [SerializeField] GameObject ToddieNKey;
     [SerializeField] GameObject GaiaNKey;
     [SerializeField] GameObject ClassmateNKey;
-    string currentNearbyNPC = "";
     string _currentNPC = "";
     int _dialogIndex = 0;
+    bool isTalking = false;
     Dialog[] _currentDialogs = { };
 
     private void Update()
     {
+        string currentNearbyNPC = "";
 
         Collider2D[] npcCollider = Physics2D.OverlapCircleAll(transform.position, 1);
-
         List<string> colliderNameList = npcCollider.Select(item => item.name).ToList();
-        Debug.Log($"{colliderNameList}");
 
         string npcName = gameObject.name;
         if (colliderNameList.Contains("Player"))
         {
             if (Input.GetKeyDown(KeyCode.N))
             {
+                isTalking = true;
                 StartDialog();
             }
             currentNearbyNPC = npcName;
@@ -59,6 +59,12 @@ public class DialogHandler : MonoBehaviour
             }
         } else
         {
+            if (isTalking)
+            {
+                isTalking = !isTalking;
+                GameManager.Instance.OpenDialog(false);
+            }
+
             currentNearbyNPC = npcName;
             switch (npcName)
             {
