@@ -170,7 +170,6 @@ public class DialogHandler : MonoBehaviour
     {
         int totalVisibleChars = textToDisplay.Count();
         int counter = 0;
-        Debug.Log($"total visible chars : {totalVisibleChars}");
         while (counter < totalVisibleChars + 1)
         {
             counter += 3;
