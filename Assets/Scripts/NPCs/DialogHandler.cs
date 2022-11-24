@@ -145,7 +145,7 @@ public class DialogHandler : MonoBehaviour
 
     void UpdateDialog()
     {
-        Btn.enabled = false;
+        Btn.gameObject.SetActive(false);
         Dialog dialog = _currentDialogs[_dialogIndex];
         NameUI.text = dialog._isNPC ? _currentNPC : GameManager.Instance.GetPlayerName();
         DialogUI.text = dialog._text;
@@ -177,7 +177,7 @@ public class DialogHandler : MonoBehaviour
             DialogUI.maxVisibleCharacters = counter;
             yield return new WaitForSeconds(0.01f);
         }
-        Btn.enabled = true;
+        Btn.gameObject.SetActive(true);
 
 
     }

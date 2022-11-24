@@ -52,7 +52,7 @@ public class EndDisplay : MonoBehaviour
 
     void UpdateDialog()
     {
-        Btn.enabled = false;
+        Btn.gameObject.SetActive(false);
         string currentDialog = Dialogs[DialogIndex];
         DialogUI.text = currentDialog;
         switch (DialogIndex)
@@ -101,7 +101,7 @@ public class EndDisplay : MonoBehaviour
             DialogUI.maxVisibleCharacters = counter;
             yield return new WaitForSeconds(0.01f);
         }
-        Btn.enabled = true;
+        Btn.gameObject.SetActive(true);
 
     }
 }

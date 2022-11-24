@@ -47,7 +47,7 @@ public class BeachEndDisplay : MonoBehaviour
 
     void UpdateDialog()
     {
-        Btn.enabled = false;
+        Btn.gameObject.SetActive(false);
         string currentDialog = Dialogs[DialogIndex];
         DialogUI.text = currentDialog;
         switch (DialogIndex)
@@ -95,7 +95,7 @@ public class BeachEndDisplay : MonoBehaviour
             DialogUI.maxVisibleCharacters = counter;
             yield return new WaitForSeconds(0.01f);
         }
-        Btn.enabled = true;
+        Btn.gameObject.SetActive(true);
 
     }
 }
