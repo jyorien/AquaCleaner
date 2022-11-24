@@ -145,11 +145,15 @@ public class DialogHandler : MonoBehaviour
 
     void UpdateDialog()
     {
+        Btn.enabled = false;
         Dialog dialog = _currentDialogs[_dialogIndex];
         NameUI.text = dialog._isNPC ? _currentNPC : GameManager.Instance.GetPlayerName();
         DialogUI.text = dialog._text;
-        
+        StopCoroutine("ShowTypewriterEffect");
+        new WaitForSeconds(1f);
+        StartCoroutine(ShowTypewriterEffect(dialog._text));
         _dialogIndex += 1;
+
         if (_dialogIndex == _currentDialogs.Length)
         {
             BtnText.text = dialog._buttonName;
@@ -160,6 +164,22 @@ public class DialogHandler : MonoBehaviour
             });
             return;
         }
+    }
+
+    IEnumerator ShowTypewriterEffect(string textToDisplay)
+    {
+        int totalVisibleChars = textToDisplay.Count();
+        int counter = 0;
+        Debug.Log($"total visible chars : {totalVisibleChars}");
+        while (counter < totalVisibleChars + 1)
+        {
+            counter += 3;
+            DialogUI.maxVisibleCharacters = counter;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Btn.enabled = true;
+
+
     }
 
     // NPCS

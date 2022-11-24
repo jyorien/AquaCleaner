@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 public class EndDisplay : MonoBehaviour
 {
     const string HIGH_SCORE = "HIGH_SCORE";
@@ -51,7 +52,7 @@ public class EndDisplay : MonoBehaviour
 
     void UpdateDialog()
     {
-
+        Btn.enabled = false;
         string currentDialog = Dialogs[DialogIndex];
         DialogUI.text = currentDialog;
         switch (DialogIndex)
@@ -75,6 +76,9 @@ public class EndDisplay : MonoBehaviour
                 break;
         }
         DialogIndex += 1;
+        StopCoroutine("ShowTypewriterEffect");
+        new WaitForSeconds(1f);
+        StartCoroutine(ShowTypewriterEffect(currentDialog));
     }
     void DisplayActionables()
     {
@@ -84,5 +88,20 @@ public class EndDisplay : MonoBehaviour
         NamePanel.SetActive(false);
         DialogPanel.SetActive(false);
         ActionablePanel.SetActive(true);
+    }
+
+    IEnumerator ShowTypewriterEffect(string textToDisplay)
+    {
+        int totalVisibleChars = textToDisplay.Count();
+        int counter = 0;
+        Debug.Log($"total visible chars : {totalVisibleChars}");
+        while (counter < totalVisibleChars + 1)
+        {
+            counter += 3;
+            DialogUI.maxVisibleCharacters = counter;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Btn.enabled = true;
+
     }
 }

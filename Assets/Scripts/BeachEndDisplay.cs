@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Linq;
 public class BeachEndDisplay : MonoBehaviour
 {
     const string HIGH_SCORE = "BEACH_HIGH_SCORE";
@@ -46,7 +47,7 @@ public class BeachEndDisplay : MonoBehaviour
 
     void UpdateDialog()
     {
-
+        Btn.enabled = false;
         string currentDialog = Dialogs[DialogIndex];
         DialogUI.text = currentDialog;
         switch (DialogIndex)
@@ -70,6 +71,9 @@ public class BeachEndDisplay : MonoBehaviour
                 break;
         }
         DialogIndex += 1;
+        StopCoroutine("ShowTypewriterEffect");
+        new WaitForSeconds(1f);
+        StartCoroutine(ShowTypewriterEffect(currentDialog));
     }
     void DisplayActionables()
     {
@@ -78,5 +82,20 @@ public class BeachEndDisplay : MonoBehaviour
         NamePanel.SetActive(false);
         DialogPanel.SetActive(false);
         ActionablePanel.SetActive(true);
+    }
+
+    IEnumerator ShowTypewriterEffect(string textToDisplay)
+    {
+        int totalVisibleChars = textToDisplay.Count();
+        int counter = 0;
+        Debug.Log($"total visible chars : {totalVisibleChars}");
+        while (counter < totalVisibleChars + 1)
+        {
+            counter += 3;
+            DialogUI.maxVisibleCharacters = counter;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Btn.enabled = true;
+
     }
 }
