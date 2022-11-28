@@ -194,8 +194,8 @@ public class DialogHandler : MonoBehaviour
         new Dialog("Any idea what's happened?" ,true, null, null),
         //new Dialog("(All that trash has caused the hermit crabs to mistake trash for new homes)", false, null, null),
          new Dialog("(I should probably clean the beach)", false, "Accept", () => {
-             SavePosition();
-             SceneManager.LoadScene(sceneName: "BeachCleanUpScene"); })
+             StartMinigame("BeachCleanUpScene");
+         })
     }
         );
     }
@@ -207,8 +207,8 @@ public class DialogHandler : MonoBehaviour
         new Dialog("D-Do you think the jellyfishes h-have gone bad?",true, null, null),
         //new Dialog("(The plastics in the ocean have caused turtles to mistake the plastics for food)",false, null, null),
         new Dialog("(I should probably collect the trash in the ocean)",false, "Accept", () => {
-            SavePosition();
-            SceneManager.LoadScene(sceneName: "GameScene"); }),
+            StartMinigame("GameScene");
+        }),
     }
     );
     }
@@ -237,5 +237,12 @@ public class DialogHandler : MonoBehaviour
     {
        PlayerPrefs.SetFloat(COORD_X, Player.transform.position.x);
        PlayerPrefs.SetFloat(COORD_Y, Player.transform.position.y);
+    }
+
+    void StartMinigame(string sceneName)
+    {
+        SavePosition();
+        GameManager.Instance.StopBGM();
+        SceneManager.LoadScene(sceneName: sceneName);
     }
 }

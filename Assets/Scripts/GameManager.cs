@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject NamePanel;
     [SerializeField] GameObject DialogPanel;
     [SerializeField] GameObject InputNamePanel;
+    AudioSource audioSource;
 
     private static GameManager _instance;
     public static GameManager Instance
@@ -26,8 +27,14 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
         _instance = this;
+    }
+
+    public void StopBGM()
+    {
+        audioSource.Stop();
     }
 
     public void OpenNameInput(bool isOpen)
