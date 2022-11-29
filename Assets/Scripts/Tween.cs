@@ -37,7 +37,7 @@ public class Tween : MonoBehaviour
         GameObject[] totalRecyclable = GameObject.FindGameObjectsWithTag("Recyclable");
         totalNumberOfWaste = totalEWaste.Length + totalTrash.Length + totalRecyclable.Length;
         if (totalNumberOfWaste > 8) return;
-        int numberOfTrashToSpawn = Random.Range(1, 4);
+        int numberOfTrashToSpawn = Random.Range(2, 5);
         for (int i = 0; i < numberOfTrashToSpawn; i++)
         {
             float spawnPositionX = Random.Range(LowerBound.position.x, UpperBound.position.x);
