@@ -22,7 +22,7 @@ public class BeachEndManager : MonoBehaviour
     void Awake()
     {
         AudioPlayer = GetComponent<AudioSource>();
-        AudioPlayer.PlayOneShot(EndBuzzerSound);
+        //AudioPlayer.PlayOneShot(EndBuzzerSound);
         _instance = this;
     }
 }

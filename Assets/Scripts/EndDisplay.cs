@@ -97,6 +97,10 @@ public class EndDisplay : MonoBehaviour
         while (counter < totalVisibleChars + 1)
         {
             counter += 3;
+            if (counter % 5 == 0)
+            {
+                GameManager.Instance.PlayTalkingSound();
+            }
             DialogUI.maxVisibleCharacters = counter;
             yield return new WaitForSeconds(0.01f);
         }

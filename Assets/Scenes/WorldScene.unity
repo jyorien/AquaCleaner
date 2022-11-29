@@ -2963,6 +2963,7 @@ MonoBehaviour:
   NamePanel: {fileID: 295078009}
   DialogPanel: {fileID: 875632952}
   InputNamePanel: {fileID: 198209851}
+  TalkingNoise: {fileID: 8300000, guid: 85ec6c46b8c41493e96e890361f231f5, type: 3}
 --- !u!4 &1112006416
 Transform:
   m_ObjectHideFlags: 0
