@@ -9,6 +9,7 @@ public class OceanGameManager : MonoBehaviour
     const string HIGH_SCORE = "HIGH_SCORE";
     int currentScore = 0;
     [SerializeField] AudioClip TenSecondsSound;
+    [SerializeField] AudioClip DropSound;
     private static OceanGameManager _instance;
     public static OceanGameManager Instance
     {
@@ -60,5 +61,9 @@ public class OceanGameManager : MonoBehaviour
     public void StartTenSecsCountdown()
     {
         AudioPlayer.PlayOneShot(TenSecondsSound);
+    }
+    public void PlayDropSound()
+    {
+        AudioPlayer.PlayOneShot(DropSound);
     }
 }

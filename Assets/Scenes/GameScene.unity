@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TenSecondsSound: {fileID: 8300000, guid: 6e5b489fa5f0649448d63c115949c6e2, type: 3}
+  DropSound: {fileID: 8300000, guid: a79410f402bc24621b3fbe64878ed8aa, type: 3}
 --- !u!4 &1201104339
 Transform:
   m_ObjectHideFlags: 0
@@ -1121,7 +1122,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e307a7257f3ab439a93f4261fd50ef84, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 18d34d01ff8d440e3bf2eafbfd54e074, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1945,6 +1946,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6131148602872273627, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131148602872273627, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 4.91
       objectReference: {fileID: 0}
@@ -1991,6 +1996,10 @@ PrefabInstance:
     - target: {fileID: 7513874359866323247, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513874359866323250, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7513874359866323251, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: m_BodyType
@@ -2058,7 +2067,7 @@ PrefabInstance:
       objectReference: {fileID: 1034307925}
     - target: {fileID: 7513874360757544858, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: MovementSpeed
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7513874360757544858, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: RightBoundary
@@ -2096,6 +2105,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.51
       objectReference: {fileID: 0}
+    - target: {fileID: 7513874360956946424, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7513874360956946425, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
       propertyPath: m_BodyType
       value: 1
@@ -2132,6 +2145,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d85a4ad9275474521bba2499e73e1f97, type: 3}
+    - target: {fileID: 7513874361095493493, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
+      propertyPath: m_TagString
+      value: OceanPlayer
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7513874359866323244, guid: a18bfbef738f34798922e763776a8a6c, type: 3}
     - {fileID: 7513874359866323247, guid: a18bfbef738f34798922e763776a8a6c, type: 3}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Trash : MonoBehaviour
 {
     Rigidbody2D rigidBody;
+    bool isDrop = false;
 
     private void Awake()
     {
@@ -39,9 +40,15 @@ public class Trash : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log($"Collider: {collision.collider.tag}");
         if (collision.collider.tag == "Trash")
         {
             Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), collision.collider);
+        }
+        if (collision.collider.tag == "OceanPlayer" && !isDrop)
+        {
+            OceanGameManager.Instance.PlayDropSound();
+            isDrop = true;
         }
     }
 

@@ -13,6 +13,7 @@ TagManager:
   - NPC
   - NameUI
   - DialogUI
+  - OceanPlayer
   layers:
   - Default
   - TransparentFX
