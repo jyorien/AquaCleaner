@@ -12,6 +12,7 @@ public class BeachCleanUpManager : MonoBehaviour
     [SerializeField] TMP_Text NewlyAddedScoreText;
     [SerializeField] AudioClip SuccessSound;
     [SerializeField] AudioClip FailureSound;
+    [SerializeField] AudioClip TenSecondsSound;
 
     private static BeachCleanUpManager _instance;
     public static BeachCleanUpManager Instance
@@ -76,6 +77,11 @@ public class BeachCleanUpManager : MonoBehaviour
         }
         AudioPlayer.Stop();
         SceneManager.LoadScene(sceneName: "BeachEndScene");
+    }
+
+    public void StartTenSecsCountdown()
+    {
+        AudioPlayer.PlayOneShot(TenSecondsSound);
     }
 
 }

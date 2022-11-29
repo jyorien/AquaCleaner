@@ -24,7 +24,10 @@ public class BeachTimer : MonoBehaviour
         while (counter > 0)
         {
             counter--;
-
+            if (counter == 10)
+            {
+                BeachCleanUpManager.Instance.StartTenSecsCountdown();
+            }
             if (counter >= 60)
             {
                 int minutes = Mathf.FloorToInt(counter / 60);

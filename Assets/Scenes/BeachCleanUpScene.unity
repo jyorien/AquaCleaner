@@ -1521,6 +1521,7 @@ MonoBehaviour:
   NewlyAddedScoreText: {fileID: 844016669}
   SuccessSound: {fileID: 8300000, guid: 5589e5b97b40c4a2f84fec09f2450206, type: 3}
   FailureSound: {fileID: 8300000, guid: 9cf402a688a474995a07dcc87f448a91, type: 3}
+  TenSecondsSound: {fileID: 8300000, guid: 6e5b489fa5f0649448d63c115949c6e2, type: 3}
 --- !u!4 &2112012614
 Transform:
   m_ObjectHideFlags: 0
