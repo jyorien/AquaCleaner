@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class OceanGameManager : MonoBehaviour
 {
+    AudioSource AudioPlayer;
     const string HIGH_SCORE = "HIGH_SCORE";
     int currentScore = 0;
-
+    [SerializeField] AudioClip TenSecondsSound;
     private static OceanGameManager _instance;
     public static OceanGameManager Instance
     {
@@ -23,6 +24,7 @@ public class OceanGameManager : MonoBehaviour
 
     void Awake()
     {
+        AudioPlayer = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
         _instance = this;
     }
@@ -35,6 +37,7 @@ public class OceanGameManager : MonoBehaviour
             PlayerPrefs.SetInt(HIGH_SCORE, currentScore);
             PlayerPrefs.Save();
         }
+        AudioPlayer.Stop();
         SceneManager.LoadScene(sceneName: "EndGameScene");
 
     }
@@ -52,5 +55,10 @@ public class OceanGameManager : MonoBehaviour
     public int GetCurrentScore()
     {
         return currentScore;
+    }
+
+    public void StartTenSecsCountdown()
+    {
+        AudioPlayer.PlayOneShot(TenSecondsSound);
     }
 }

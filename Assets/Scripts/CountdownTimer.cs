@@ -26,6 +26,10 @@ public class CountdownTimer : MonoBehaviour
             yield return new WaitForSeconds(1);
             counter--;
             displayedText.text = $"00:{counter:D2}";
+            if (counter == 10)
+            {
+                OceanGameManager.Instance.StartTenSecsCountdown();
+            }
             //Debug.Log(counter);
             if (counter == 0)
             {
