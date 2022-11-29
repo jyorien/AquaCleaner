@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject DialogPanel;
     [SerializeField] GameObject InputNamePanel;
     [SerializeField] AudioClip TalkingNoise;
+    [SerializeField] AudioClip ButtonNoise;
     AudioSource audioSource;
 
     private static GameManager _instance;
@@ -36,6 +37,11 @@ public class GameManager : MonoBehaviour
     public void StopBGM()
     {
         audioSource.Stop();
+    }
+
+    public void PlayButtonClickSound()
+    {
+        audioSource.PlayOneShot(ButtonNoise);
     }
 
     public void PlayTalkingSound()

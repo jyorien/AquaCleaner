@@ -944,6 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EndBuzzerSound: {fileID: 8300000, guid: 20b7cf70f967c4bb9987ed79ff77096c, type: 3}
+  ButtonNoise: {fileID: 8300000, guid: af6a8ae2db5b5403fabaabb778968ed2, type: 3}
 --- !u!82 &587668192
 AudioSource:
   m_ObjectHideFlags: 0

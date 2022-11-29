@@ -108,6 +108,7 @@ public class DialogHandler : MonoBehaviour
                 _currentDialogs = Hermie.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
+                    GameManager.Instance.PlayButtonClickSound();
                     UpdateDialog();
                 });
                 break;
@@ -117,6 +118,7 @@ public class DialogHandler : MonoBehaviour
                 _currentDialogs = Toddie.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
+                    GameManager.Instance.PlayButtonClickSound();
                     UpdateDialog();
                 });
                 break;
@@ -126,6 +128,7 @@ public class DialogHandler : MonoBehaviour
                 _currentDialogs = MsGaia.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
+                    GameManager.Instance.PlayButtonClickSound();
                     UpdateDialog();
                 });
                 break;
@@ -135,6 +138,7 @@ public class DialogHandler : MonoBehaviour
                 _currentDialogs = Classmate.Dialogs;
                 UpdateDialog();
                 Btn.onClick.AddListener(() => {
+                    GameManager.Instance.PlayButtonClickSound();
                     UpdateDialog();
                 });
                 break;
@@ -160,6 +164,7 @@ public class DialogHandler : MonoBehaviour
             Btn.onClick.RemoveAllListeners();
             Btn.onClick.AddListener(() =>
             {
+                GameManager.Instance.PlayButtonClickSound();
                 dialog._buttonAction.Invoke();
             });
             return;

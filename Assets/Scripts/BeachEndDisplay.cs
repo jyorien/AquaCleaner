@@ -28,7 +28,9 @@ public class BeachEndDisplay : MonoBehaviour
         int highScore = PlayerPrefs.GetInt(HIGH_SCORE, 0);
         scoreText.text = $"Total Score: {BeachCleanUpManager.Instance.GetBeachScore()}";
         highScoreText.text = $"High Score: {highScore}";
-        BackButton.onClick.AddListener(() => { SceneManager.LoadScene(sceneName: "WorldScene"); });
+        BackButton.onClick.AddListener(() => {
+            BeachEndManager.Instance.PlayButtonClickSound();
+            SceneManager.LoadScene(sceneName: "WorldScene"); });
 
         Dialogs = new string[] {
             $"Wow, {GameManager.Instance.GetPlayerName()}! You helped clean the beach!",
@@ -42,7 +44,9 @@ public class BeachEndDisplay : MonoBehaviour
             "We can all play a part by educating ourselves on the issue of pollution on beaches and taking steps to address the problems."
         };
         UpdateDialog();
-        Btn.onClick.AddListener(() => { UpdateDialog(); });
+        Btn.onClick.AddListener(() => {
+            BeachEndManager.Instance.PlayButtonClickSound();
+            UpdateDialog(); });
     }
 
     void UpdateDialog()

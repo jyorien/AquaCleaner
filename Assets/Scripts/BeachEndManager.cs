@@ -5,6 +5,7 @@ using UnityEngine;
 public class BeachEndManager : MonoBehaviour
 {
     [SerializeField] AudioClip EndBuzzerSound;
+    [SerializeField] AudioClip ButtonNoise;
     AudioSource AudioPlayer;
     private static BeachEndManager _instance;
     public static BeachEndManager Instance
@@ -25,4 +26,9 @@ public class BeachEndManager : MonoBehaviour
         //AudioPlayer.PlayOneShot(EndBuzzerSound);
         _instance = this;
     }
+    public void PlayButtonClickSound()
+    {
+        AudioPlayer.PlayOneShot(ButtonNoise);
+    }
+
 }

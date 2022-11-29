@@ -30,7 +30,9 @@ public class EndDisplay : MonoBehaviour
         scoreText.text = $"Total Score: {OceanGameManager.Instance.GetCurrentScore()}";
         highScoreText.text = $"High Score: {highScore}";
 
-        BackButton.onClick.AddListener(() => { SceneManager.LoadScene(sceneName: "WorldScene"); });
+        BackButton.onClick.AddListener(() => {
+            BeachEndManager.Instance.PlayButtonClickSound();
+            SceneManager.LoadScene(sceneName: "WorldScene"); });
 
         Dialogs = new string[] {
             $"T-thanks for collecting some of the t-trash, {GameManager.Instance.GetPlayerName()}!",
@@ -47,7 +49,9 @@ public class EndDisplay : MonoBehaviour
             "W-we can all play a part by educating o-ourselves on this issue and take small steps to address the problems."
         };
         UpdateDialog();
-        Btn.onClick.AddListener(() => { UpdateDialog(); });
+        Btn.onClick.AddListener(() => {
+            BeachEndManager.Instance.PlayButtonClickSound();
+            UpdateDialog(); });
     }
 
     void UpdateDialog()
