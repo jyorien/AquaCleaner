@@ -42,8 +42,7 @@ public class BeachCleanUpManager : MonoBehaviour
         beachScore += 1;
         NewlyAddedScoreText.text = "+1";
         NewlyAddedScoreText.color = new Color32(134, 255, 137, 255);
-        AudioPlayer.clip = SuccessSound;
-        AudioPlayer.Play();
+        AudioPlayer.PlayOneShot(SuccessSound);
     }
 
     public void DeductFromBeachScore()
@@ -59,8 +58,7 @@ public class BeachCleanUpManager : MonoBehaviour
         }
         NewlyAddedScoreText.text = "-2";
         NewlyAddedScoreText.color = new Color32(255, 57, 111, 255);
-        AudioPlayer.clip = FailureSound;
-        AudioPlayer.Play();
+        AudioPlayer.PlayOneShot(FailureSound);
     }
 
     public int GetBeachScore()
@@ -76,6 +74,7 @@ public class BeachCleanUpManager : MonoBehaviour
             PlayerPrefs.SetInt(BEACH_HIGH_SCORE, beachScore);
             PlayerPrefs.Save();
         }
+        AudioPlayer.Stop();
         SceneManager.LoadScene(sceneName: "BeachEndScene");
     }
 
