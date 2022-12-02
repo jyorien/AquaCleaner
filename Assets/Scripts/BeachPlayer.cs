@@ -25,22 +25,22 @@ public class BeachPlayer : MonoBehaviour
     {
         HorizontalMovement = Input.GetAxisRaw("Horizontal");
         VerticalMovement = Input.GetAxisRaw("Vertical");
-        if ( Input.GetKeyDown(KeyCode.W))
+        if ( Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             backward = true;
             left = right = forward = false;
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             left = true;
             forward = right = backward = false;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             forward = true;
             left = right = backward   = false;
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             right = true;
             left = forward = backward = false;
