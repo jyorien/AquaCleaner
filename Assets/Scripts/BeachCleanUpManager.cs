@@ -40,14 +40,18 @@ public class BeachCleanUpManager : MonoBehaviour
 
     public void AddToBeachScore()
     {
+        NewlyAddedScoreText.gameObject.SetActive(true);
         beachScore += 1;
         NewlyAddedScoreText.text = "+1";
         NewlyAddedScoreText.color = new Color32(134, 255, 137, 255);
         AudioPlayer.PlayOneShot(SuccessSound);
+        StartCoroutine(HideScoreChange());
     }
 
     public void DeductFromBeachScore()
     {
+        NewlyAddedScoreText.gameObject.SetActive(true);
+
         var updatedScore = beachScore - 2;
         if (updatedScore < 0)
         {
@@ -60,6 +64,15 @@ public class BeachCleanUpManager : MonoBehaviour
         NewlyAddedScoreText.text = "-2";
         NewlyAddedScoreText.color = new Color32(255, 57, 111, 255);
         AudioPlayer.PlayOneShot(FailureSound);
+        StopCoroutine("HideScoreChange");
+        StartCoroutine(HideScoreChange());
+    }
+
+    IEnumerator HideScoreChange()
+    {
+        yield return new WaitForSeconds(1);
+        NewlyAddedScoreText.gameObject.SetActive(false);
+
     }
 
     public int GetBeachScore()
