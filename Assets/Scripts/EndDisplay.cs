@@ -15,7 +15,6 @@ public class EndDisplay : MonoBehaviour
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
     [SerializeField] TMP_Text BtnText;
-    [SerializeField] GameObject NamePanel;
     [SerializeField] GameObject DialogPanel;
     [SerializeField] GameObject GreatPacificGP;
     [SerializeField] GameObject WhaleNet;
@@ -89,7 +88,6 @@ public class EndDisplay : MonoBehaviour
         GreatPacificGP.SetActive(false);
         WhaleNet.SetActive(false);
         PlasticTurtle.SetActive(false);
-        NamePanel.SetActive(false);
         DialogPanel.SetActive(false);
         ActionablePanel.SetActive(true);
     }
