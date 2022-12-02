@@ -26,8 +26,8 @@ public class EndDisplay : MonoBehaviour
     void Start()
     {
         int highScore = PlayerPrefs.GetInt(HIGH_SCORE, 0);
-        scoreText.text = $"Total Score: {OceanGameManager.Instance.GetCurrentScore()}";
-        highScoreText.text = $"High Score: {highScore}";
+        scoreText.text = $"Total Score: {OceanGameManager.Instance.GetCurrentScore().ToString().PadLeft(4, '0')}";
+        highScoreText.text = $"High Score: {highScore.ToString().PadLeft(4, '0')}";
 
         BackButton.onClick.AddListener(() => {
             BeachEndManager.Instance.PlayButtonClickSound();

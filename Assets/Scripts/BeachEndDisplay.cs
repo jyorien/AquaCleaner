@@ -25,8 +25,8 @@ public class BeachEndDisplay : MonoBehaviour
     void Start()
     {
         int highScore = PlayerPrefs.GetInt(HIGH_SCORE, 0);
-        scoreText.text = $"Total Score: {BeachCleanUpManager.Instance.GetBeachScore()}";
-        highScoreText.text = $"High Score: {highScore}";
+        scoreText.text = $"Total Score: {BeachCleanUpManager.Instance.GetBeachScore().ToString().PadLeft(4,'0')}";
+        highScoreText.text = $"High Score: {highScore.ToString().PadLeft(4, '0')}";
         BackButton.onClick.AddListener(() => {
             BeachEndManager.Instance.PlayButtonClickSound();
             SceneManager.LoadScene(sceneName: "WorldScene"); });
