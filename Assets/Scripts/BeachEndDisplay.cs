@@ -15,7 +15,6 @@ public class BeachEndDisplay : MonoBehaviour
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
     [SerializeField] TMP_Text BtnText;
-    [SerializeField] GameObject NamePanel;
     [SerializeField] GameObject DialogPanel;
     [SerializeField] GameObject BeachPollutionPics;
     [SerializeField] GameObject PlasticAnimalPics;
@@ -83,7 +82,6 @@ public class BeachEndDisplay : MonoBehaviour
     {
         BeachPollutionPics.SetActive(false);
         PlasticAnimalPics.SetActive(false);
-        NamePanel.SetActive(false);
         DialogPanel.SetActive(false);
         ActionablePanel.SetActive(true);
     }
