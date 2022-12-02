@@ -10,6 +10,8 @@ public class DialogHandler : MonoBehaviour
 {
     const string COORD_X = "COORD_X";
     const string COORD_Y = "COORD_Y";
+    const string IS_TALKED_GAIA = "IS_TALKED_GAIA";
+    const string IS_TALKED_CLASSMATE = "IS_TALKED_CLASSMATE";
     [SerializeField] TMP_Text NameUI;
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
@@ -226,7 +228,11 @@ public class DialogHandler : MonoBehaviour
         return new NPC("Ms Gaia", new Dialog[]{
         new Dialog($"Hey, {GameManager.Instance.GetPlayerName()}! Today, the Environment Club decided to clean the beach.", true, null, null),
         new Dialog($"The beach has been looking bad recently.. the creatures here don't look well.", true, null, null),
-        new Dialog($"I wonder if there's a way to help them?", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
+        new Dialog($"I wonder if there's a way to help them?", true, "End", () => {
+            PlayerPrefs.SetInt(IS_TALKED_GAIA, 1);
+            GoalsDisplay.Instance.UpdateGoals();
+            GameManager.Instance.OpenDialog(false);
+        }),
     }
 );
     }
@@ -238,7 +244,11 @@ public class DialogHandler : MonoBehaviour
         new Dialog("When I'm sad, I sit by the waters and it magically makes me feel better~", true, null, null),
         new Dialog("Don't you think it would be a shame if all we saw was floating trash in the future?", true, null, null),
         new Dialog("Every year, roughly 8 million tons of plastic enters our oceans.", true, null, null),
-        new Dialog("I joined the Environmental Club because I wanted to make a difference~", true, "End", () => { GameManager.Instance.OpenDialog(false); }),
+        new Dialog("I joined the Environmental Club because I wanted to make a difference~", true, "End", () => {
+            PlayerPrefs.SetInt(IS_TALKED_CLASSMATE, 1);
+            GoalsDisplay.Instance.UpdateGoals();
+            GameManager.Instance.OpenDialog(false);
+        }),
     });
     }
 
