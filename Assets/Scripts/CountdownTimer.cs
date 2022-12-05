@@ -49,11 +49,11 @@ public class CountdownTimer : MonoBehaviour
             {
                 int minutes = Mathf.FloorToInt(counter / 60);
                 int secs = counter % 60;
-                displayedText.text = $"{minutes:D2}:{secs:D2}";
+                displayedText.text = $"Time: {minutes:D2}:{secs:D2}";
             }
             else
             {
-                displayedText.text = $"00:{counter:D2}";
+                displayedText.text = $"Time: 00:{counter:D2}";
             }
             if (counter == 0)
             {

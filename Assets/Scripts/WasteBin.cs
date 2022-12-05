@@ -9,6 +9,6 @@ public class WasteBin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BeachScoreText.text = $"{BeachCleanUpManager.Instance.GetBeachScore():D4}";
+        BeachScoreText.text = $"Score: {BeachCleanUpManager.Instance.GetBeachScore():D4}";
     }
 }
