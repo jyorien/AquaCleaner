@@ -5,25 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
+    path: Assets/Scenes/StartMenuScene.unity
+    guid: 2fe97b80ead954291a208df3adcf7b50
+  - enabled: 1
     path: Assets/Scenes/WorldScene.unity
     guid: 2d03f0fa591f844f692f8d519558f9ac
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/EndGameScene.unity
     guid: 41c7f75711e8d4bd5b3cbbc8927e81a2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeachEndScene.unity
     guid: 0a0c836f671ca4bd89f7c0510c979fbd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/BeachCleanUpScene.unity
     guid: 2db6be4373bc445cd9496b6cab0ccad0
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/StartMenuScene.unity
-    guid: 2fe97b80ead954291a208df3adcf7b50
   m_configObjects: {}
