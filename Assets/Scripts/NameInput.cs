@@ -28,6 +28,7 @@ public class NameInput : MonoBehaviour
                 PlayerScript.enabled = true;
                 PlayerPrefs.SetInt(HAS_PLAYED, 1);
                 PlayerPrefs.SetString(PLAYER_NAME, NameInputField.text);
+                GameManager.Instance.PlayButtonClickSound();
             });
         }
         else
