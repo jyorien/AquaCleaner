@@ -18,7 +18,7 @@ public class NameInput : MonoBehaviour
     {
         int hasPlayed = PlayerPrefs.GetInt(HAS_PLAYED, 0);
         GameManager.Instance.OpenDialog(false);
-
+        NameInputField.contentType = TMP_InputField.ContentType.Name;
         if (hasPlayed == 0)
         {
             ConfirmButton.onClick.AddListener(() =>
