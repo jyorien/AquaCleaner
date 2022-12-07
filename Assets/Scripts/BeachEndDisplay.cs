@@ -14,7 +14,6 @@ public class BeachEndDisplay : MonoBehaviour
     [SerializeField] Button BackButton;
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
-    [SerializeField] TMP_Text BtnText;
     [SerializeField] GameObject DialogPanel;
     [SerializeField] GameObject BeachPollutionPics;
     [SerializeField] GameObject PlasticAnimalPics;

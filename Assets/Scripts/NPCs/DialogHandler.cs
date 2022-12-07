@@ -15,16 +15,24 @@ public class DialogHandler : MonoBehaviour
     [SerializeField] TMP_Text NameUI;
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
-    [SerializeField] TMP_Text BtnText;
     [SerializeField] GameObject Player;
     [SerializeField] GameObject HermieNKey;
     [SerializeField] GameObject ToddieNKey;
     [SerializeField] GameObject GaiaNKey;
     [SerializeField] GameObject ClassmateNKey;
+    [SerializeField] Sprite NextButton;
+    [SerializeField] Sprite EndButton;
+    [SerializeField] Sprite AcceptButton;
+    Image ButtonImage;
     string _currentNPC = "";
     int _dialogIndex = 0;
     bool isTalking = false;
     Dialog[] _currentDialogs = { };
+
+    private void Start()
+    {
+        ButtonImage = Btn.GetComponent<Image>();
+    }
 
     private void Update()
     {
@@ -99,7 +107,7 @@ public class DialogHandler : MonoBehaviour
         GameManager.Instance.OpenDialog(true);
         // reset index
         _dialogIndex = 0;
-        BtnText.text = "Next";
+        ButtonImage.sprite = NextButton;
         Btn.onClick.RemoveAllListeners();
 
         switch (gameObject.name)
@@ -162,7 +170,18 @@ public class DialogHandler : MonoBehaviour
 
         if (_dialogIndex == _currentDialogs.Length)
         {
-            BtnText.text = dialog._buttonName;
+            switch (dialog._buttonName)
+            {
+                case "End":
+                    ButtonImage.sprite = EndButton;
+                    break;
+                case "Accept":
+                    ButtonImage.sprite = AcceptButton;
+                    break;
+                default:
+                    ButtonImage.sprite = NextButton;
+                    break;
+            }
             Btn.onClick.RemoveAllListeners();
             Btn.onClick.AddListener(() =>
             {

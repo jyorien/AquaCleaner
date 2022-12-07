@@ -14,7 +14,6 @@ public class EndDisplay : MonoBehaviour
     [SerializeField] Button BackButton;
     [SerializeField] TMP_Text DialogUI;
     [SerializeField] Button Btn;
-    [SerializeField] TMP_Text BtnText;
     [SerializeField] GameObject DialogPanel;
     [SerializeField] GameObject GreatPacificGP;
     [SerializeField] GameObject WhaleNet;
